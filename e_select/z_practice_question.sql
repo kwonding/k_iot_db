@@ -49,14 +49,27 @@ where
 	
 -- 7. 최근에 구매한 회원과 구매일을 조회하시오. (가장 최근 구매일 기준 상위 3명)
 -- group by, 집계함수, order by, limit
-select member_id, join_date
+select member_id, max(purchase_date) last_purchase_date
 from `purchases`
 group by
 	member_id
 order by
-	join_date
+	last_purchase_date desc
 limit 3;
-	
 
 -- 8. 회원별로 구매한 총 금액(amount의 합)을 조회하시오.
 -- group by, 집계함수
+select member_id, sum(amount)
+from 
+	`purchases`
+group by
+	member_id;
+
+-- member_id에 맞는 name을 가져오고 싶으면 join 사용    
+select P.member_id, M.name, sum(P.amount)
+from 
+	`purchases` P
+    left join `members` M
+    on P.member_id = M.member_id
+group by
+	P.member_id;
