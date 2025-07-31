@@ -62,7 +62,7 @@ create table `example02` (
 	# 컬럼명 데이터타입 [primary key] [auto_increment] / 옵션 순서 상관 없음
     id bigint auto_increment primary key,
     name varchar(50)
-);
+); 
 
 insert into `example02` (name)
 values
