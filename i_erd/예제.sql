@@ -20,6 +20,7 @@
 drop table `Students`;
 
 CREATE DATABASE school_db;
+DROP DATABASE IF EXISTS school_db;
 
 create table `Students` (
 	학생ID int primary key, 
@@ -48,7 +49,7 @@ create table `Courses` (
 	강의ID int primary key,
     강의명 varchar(100),
     담당교수ID int,
-    학점수 int
+    학점수 int,
     foreign key (담당교수ID) references Professors(교수ID)
 );
 -- Courses
@@ -61,7 +62,7 @@ create table `Enrollments`(
     학생ID int ,
     강의ID int,
     수강년도 int,
-    학기 int
+    학기 int,
     FOREIGN KEY (학생ID) REFERENCES Students(학생ID),
     FOREIGN KEY (강의ID) REFERENCES Courses(강의ID)
 );
@@ -69,7 +70,6 @@ create table `Enrollments`(
 INSERT INTO Enrollments VALUES (1, 1, 1, 2023, 1);
 INSERT INTO Enrollments VALUES (2, 2, 2, 2023, 1);
 INSERT INTO Enrollments VALUES (3, 3, 3, 2023, 1);
-
 
 /*
 	1. 전공이 컴퓨터 과학인 학생들의 이름과 입학년도를 조회하는 SQL 명령문을 작성
@@ -99,3 +99,5 @@ from
     on S.학생ID = E.학생ID
 where
 	E.수강년도 = 2023 and E.학기 = 1;
+
+  
