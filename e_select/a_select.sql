@@ -56,7 +56,7 @@ select
 from
 	`members`
 where
-	# 조건절에는 true/false(논리값)를 변환하는 연산자 사용
+	# 조건절에는 true/false(논리값)를 반환하는 연산자 사용
 	points > 200;
     
 # -------- where 조건절 --------------- #    
